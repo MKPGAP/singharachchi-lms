@@ -104,7 +104,7 @@ export default function RegisterPage() {
             type="text"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
-            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-[#0B1F4A]"
+            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-[#0B1F4A] text-gray-900"
             placeholder="ඔබගේ නම"
           />
         </div>
@@ -117,8 +117,8 @@ export default function RegisterPage() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-[#0B1F4A]"
-            placeholder="your@email.com"
+            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-[#0B1F4A] text-gray-900"
+           placeholder="your@email.com"
           />
         </div>
 
@@ -130,7 +130,7 @@ export default function RegisterPage() {
             type="tel"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-[#0B1F4A]"
+            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-[#0B1F4A] text-gray-900"
             placeholder="07X XXX XXXX"
           />
         </div>
@@ -143,7 +143,7 @@ export default function RegisterPage() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-[#0B1F4A]"
+            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-[#0B1F4A] text-gray-900"
             placeholder="••••••••"
           />
         </div>
