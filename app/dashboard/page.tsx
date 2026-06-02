@@ -1,8 +1,35 @@
 'use client'
 import { supabase } from '../lib/supabase'
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
 
 export default function DashboardPage() {
+  const [studentName, setStudentName] = useState('')
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const getUser = async () => {
+      const { data: { user } } = await supabase.auth.getUser()
+      if (!user) {
+        window.location.replace('/login')
+        return
+      }
+      setStudentName(user.user_metadata?.full_name || user.email || 'ශිෂ්‍යයා')
+      setLoading(false)
+    }
+    getUser()
+  }, [])
+
+  if (loading) {
+    return (
+      <main className="min-h-screen bg-[#F5F6FA] flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-4xl mb-4">⏳</div>
+          <p className="text-[#0B1F4A] font-semibold">පූරණය වෙමින්...</p>
+        </div>
+      </main>
+    )
+  }
   return (
     <main className="min-h-screen bg-[#F5F6FA]">
       {/* Header */}
@@ -14,7 +41,7 @@ export default function DashboardPage() {
           </p>
         </div>
         <div className="flex items-center gap-4">
-          <span className="text-sm text-gray-300">ආයුබෝවන්, ශිෂ්‍යයා!</span>
+          <span className="text-sm text-gray-300">ආයුබෝවන්, {studentName}!</span>
           <button
             onClick={async () => {
               await supabase.auth.signOut()
@@ -29,7 +56,7 @@ export default function DashboardPage() {
       <div className="max-w-5xl mx-auto px-8 py-10">
         {/* Welcome */}
         <div className="bg-[#0B1F4A] text-white rounded-xl p-6 mb-8">
-          <h2 className="text-2xl font-bold mb-1">ආයුබෝවන්! 👋</h2>
+          <h2 className="text-2xl font-bold mb-1">ආයුබෝවන්, {studentName}! 👋</h2>
           <p className="text-gray-300 text-sm">
             ඔබගේ A/L මාධ්‍ය ගමන අද පටන් ගනිමු!
           </p>
