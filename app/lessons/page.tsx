@@ -43,16 +43,16 @@ const weeks = [...new Set(lessons.map(l => l.week))]
 
 export default function LessonsPage() {
   return (
-    <main className="min-h-screen bg-[#F5F6FA]">
+    <main className="min-h-screen bg-[#050A14] text-white">
       {/* Header */}
-      <header className="bg-[#0B1F4A] text-white py-4 px-8 flex items-center justify-between">
+      <header className="border-b border-white/10 bg-black/20 backdrop-blur-xl py-4 px-5 md:px-8 flex items-center justify-between">
         <div>
           <h1 className="text-xl font-bold">Singharachchi Sir</h1>
-          <p className="text-[#A0192D] text-xs font-semibold">
+          <p className="font-noto-si text-[#A0192D] text-xs font-semibold">
             කලා ලොවේ රජ විෂය — Media
           </p>
         </div>
-        <nav className="flex gap-4 text-sm">
+        <nav className="flex gap-4 text-sm text-gray-300">
           <Link href="/dashboard" className="hover:text-[#A0192D] transition">
             Dashboard
           </Link>
@@ -63,17 +63,17 @@ export default function LessonsPage() {
       </header>
 
       {/* Course Title */}
-      <section className="bg-[#0B1F4A] text-white py-8 px-8">
+      <section className="py-8 px-5 md:px-8">
         <p className="text-gray-400 text-sm mb-1">A/L Media Studies 2026</p>
-        <h2 className="text-2xl font-bold">පාඩම් · Lessons</h2>
+        <h2 className="font-noto-si text-2xl font-bold">පාඩම් · Lessons</h2>
       </section>
 
       {/* Lessons List */}
-      <div className="max-w-4xl mx-auto px-8 py-10">
+      <div className="max-w-4xl mx-auto px-5 md:px-8 py-10">
         {weeks.map((week) => (
           <div key={week} className="mb-8">
-            <h3 className="text-lg font-bold text-[#0B1F4A] mb-4 flex items-center gap-2">
-              <span className="bg-[#0B1F4A] text-white px-3 py-1 rounded-full text-sm">
+            <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
+              <span className="font-noto-si bg-white/10 border border-white/15 text-white px-3 py-1 rounded-full text-sm">
                 {week}
               </span>
             </h3>
@@ -82,13 +82,13 @@ export default function LessonsPage() {
                 .filter(l => l.week === week)
                 .map((lesson) => (
                   <Link href={`/lessons/${lesson.id}`} key={lesson.id}>
-                    <div className="bg-white rounded-xl p-4 shadow-sm flex items-center justify-between hover:shadow-md transition cursor-pointer group">
+                    <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4 flex items-center justify-between hover:bg-white/[0.05] transition cursor-pointer group">
                       <div className="flex items-center gap-4">
-                        <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold ${lesson.type === 'pdf' ? 'bg-[#A0192D]' : 'bg-[#0B1F4A]'}`}>
+                        <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold ${lesson.type === 'pdf' ? 'bg-[#A0192D]' : 'bg-white/20'}`}>
                           {lesson.type === 'pdf' ? '📄' : '🎥'}
                         </div>
                         <div>
-                          <p className="font-semibold text-[#0B1F4A] group-hover:text-[#A0192D] transition">
+                          <p className="font-noto-si font-semibold group-hover:text-[#A0192D] transition">
                             {lesson.title}
                           </p>
                           <p className="text-gray-400 text-xs">{lesson.title_en}</p>
@@ -96,7 +96,7 @@ export default function LessonsPage() {
                       </div>
                       <div className="flex items-center gap-3">
                         <span className="text-xs text-gray-400">{lesson.duration}</span>
-                        <span className="text-[#0B1F4A] group-hover:text-[#A0192D] transition">
+                        <span className="text-gray-300 group-hover:text-[#A0192D] transition">
                           →
                         </span>
                       </div>

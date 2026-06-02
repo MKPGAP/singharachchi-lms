@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@400;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050A14;
+  --foreground: #ffffff;
 }
 
 @theme inline {
@@ -12,15 +13,28 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@font-face {
+  font-family: 'Guardia';
+  src: url('/fonts/Guardia-Serious.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-guardia {
+  font-family: 'Guardia', sans-serif;
+}
+
+.font-si {
+  font-family: 'Gemunu Libre', 'Noto Sans Sinhala', sans-serif;
+}
+
+.font-noto-si {
+  font-family: 'Gemunu Libre', 'Noto Sans Sinhala', sans-serif;
 }

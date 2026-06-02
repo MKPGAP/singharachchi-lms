@@ -53,16 +53,16 @@ export default function PaymentPage() {
 
   if (success) {
     return (
-      <main className="min-h-screen bg-[#F5F6FA] flex items-center justify-center">
-        <div className="bg-white rounded-xl shadow-md p-8 w-full max-w-md text-center">
+      <main className="min-h-screen bg-[#050A14] text-white flex items-center justify-center px-4">
+        <div className="w-full max-w-md rounded-2xl border border-white/10 bg-white/[0.03] p-8 text-center shadow-[0_30px_80px_rgba(0,0,0,0.45)] backdrop-blur-xl">
           <div className="text-5xl mb-4">✅</div>
-          <h2 className="text-xl font-bold text-[#0B1F4A] mb-2">
+          <h2 className="font-noto-si text-xl font-bold mb-2">
             ගෙවීම් රිසිට්පත යවා ඇත!
           </h2>
-          <p className="text-gray-500 text-sm mb-6">
+          <p className="font-noto-si text-gray-300 text-sm mb-6">
             සිංහආරච්චි සර් විසින් අනුමත කළ පසු ඔබට email දැනුම්දීමක් ලැබේ.
           </p>
-          <a href="/dashboard" className="bg-[#0B1F4A] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#1A3A7A] transition">
+          <a href="/dashboard" className="font-noto-si inline-block rounded-lg bg-linear-to-r from-[#B41F36] to-[#8E1327] px-6 py-3 font-semibold text-white transition hover:brightness-110">
             Dashboard එකට යන්න
           </a>
         </div>
@@ -71,63 +71,63 @@ export default function PaymentPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#F5F6FA] flex items-center justify-center">
-      <div className="bg-white rounded-xl shadow-md p-8 w-full max-w-md">
+    <main className="min-h-screen bg-[#050A14] text-white flex items-center justify-center px-4 py-10">
+      <div className="w-full max-w-md rounded-2xl border border-white/10 bg-white/[0.03] p-8 shadow-[0_30px_80px_rgba(0,0,0,0.45)] backdrop-blur-xl">
         <div className="text-center mb-6">
-          <h1 className="text-2xl font-bold text-[#0B1F4A]">
+          <h1 className="text-2xl font-bold">
             Singharachchi Sir
           </h1>
-          <p className="text-[#A0192D] text-sm font-semibold">
+          <p className="font-noto-si text-[#A0192D] text-sm font-semibold">
             කලා ලොවේ රජ විෂය — Media
           </p>
         </div>
 
-        <h2 className="text-xl font-bold text-[#0B1F4A] mb-2 text-center">
+        <h2 className="font-noto-si text-xl font-bold mb-2 text-center">
           ගෙවීම් රිසිට්පත · Bank Slip
         </h2>
-        <p className="text-center text-gray-500 text-sm mb-6">
+        <p className="font-noto-si text-center text-gray-300 text-sm mb-6">
           බැංකු තැන්පතුවෙන් පසු රිසිට්පත upload කරන්න
         </p>
 
         {/* Bank Details */}
-        <div className="bg-[#F5F6FA] rounded-lg p-4 mb-6 border border-gray-200">
-          <h3 className="font-bold text-[#0B1F4A] mb-3 text-sm">
+        <div className="rounded-lg p-4 mb-6 border border-white/10 bg-white/5">
+          <h3 className="font-noto-si font-bold text-white mb-3 text-sm">
             බැංකු විස්තර · Bank Details
           </h3>
           <div className="space-y-2 text-sm">
             <div className="flex justify-between">
-              <span className="text-gray-500">ගිණුම් නාමය</span>
-              <span className="font-semibold text-[#0B1F4A]">Sampath Singharachchi</span>
+              <span className="font-noto-si text-gray-400">ගිණුම් නාමය</span>
+              <span className="font-semibold text-white">Sampath Singharachchi</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-500">බැංකුව</span>
-              <span className="font-semibold text-[#0B1F4A]">Bank of Ceylon</span>
+              <span className="font-noto-si text-gray-400">බැංකුව</span>
+              <span className="font-semibold text-white">Bank of Ceylon</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-500">ගිණුම් අංකය</span>
-              <span className="font-semibold text-[#0B1F4A]">XXXX XXXX XXXX</span>
+              <span className="font-noto-si text-gray-400">ගිණුම් අංකය</span>
+              <span className="font-semibold text-white">XXXX XXXX XXXX</span>
             </div>
-            <div className="flex justify-between border-t pt-2 mt-2">
-              <span className="text-gray-500">ගෙවිය යුතු මුදල</span>
+            <div className="flex justify-between border-t border-white/10 pt-2 mt-2">
+              <span className="font-noto-si text-gray-400">ගෙවිය යුතු මුදල</span>
               <span className="font-bold text-[#A0192D] text-lg">LKR 2,500</span>
             </div>
           </div>
         </div>
 
         {error && (
-          <div className="bg-red-50 text-red-600 p-3 rounded-lg mb-4 text-sm">
+          <div className="bg-red-500/10 border border-red-500/30 text-red-300 p-3 rounded-lg mb-4 text-sm">
             {error}
           </div>
         )}
 
         {/* File Upload */}
         <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="font-noto-si block text-sm font-medium text-gray-300 mb-2">
             රිසිට්පත Upload කරන්න
           </label>
-          <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-[#0B1F4A] transition">
+          <div className="border-2 border-dashed border-white/20 rounded-lg p-6 text-center hover:border-[#A0192D] transition">
             <div className="text-3xl mb-2">📎</div>
-            <p className="text-sm text-gray-500 mb-3">
+            <p className="font-noto-si text-sm text-gray-400 mb-3">
               රිසිට්පතේ screenshot එක තෝරන්න
             </p>
             <input
@@ -139,7 +139,7 @@ export default function PaymentPage() {
             />
             <label
               htmlFor="slip-upload"
-              className="bg-[#0B1F4A] text-white px-4 py-2 rounded-lg text-sm font-semibold cursor-pointer hover:bg-[#1A3A7A] transition"
+              className="font-noto-si bg-linear-to-r from-[#B41F36] to-[#8E1327] text-white px-4 py-2 rounded-lg text-sm font-semibold cursor-pointer hover:brightness-110 transition"
             >
               ගොනුව තෝරන්න · Choose File
             </label>
@@ -154,7 +154,7 @@ export default function PaymentPage() {
         <button
           onClick={handleUpload}
           disabled={!file || uploading}
-          className="w-full bg-[#A0192D] text-white py-3 rounded-lg font-semibold hover:bg-[#8a1526] transition disabled:opacity-50"
+          className="font-noto-si w-full bg-linear-to-r from-[#B41F36] to-[#8E1327] text-white py-3 rounded-lg font-semibold hover:brightness-110 transition disabled:opacity-50"
         >
           {uploading ? 'යවමින්...' : 'රිසිට්පත යවන්න · Submit'}
         </button>
