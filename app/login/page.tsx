@@ -11,11 +11,20 @@ export default function LoginPage() {
   const handleLogin = async () => {
     setLoading(true)
     setError('')
+    
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password
     })
-    if (error) setError(error.message)
+    
+    if (error) {
+      setError(error.message)
+      setLoading(false)
+      return
+    }
+
+    // Redirect to dashboard
+    window.location.href = '/dashboard'
     setLoading(false)
   }
 

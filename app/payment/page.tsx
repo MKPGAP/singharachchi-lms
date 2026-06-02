@@ -1,19 +1,54 @@
 'use client'
 import { useState } from 'react'
+import { supabase } from '../lib/supabase'
 
 export default function PaymentPage() {
   const [file, setFile] = useState<File | null>(null)
   const [uploading, setUploading] = useState(false)
   const [success, setSuccess] = useState(false)
+  const [error, setError] = useState('')
 
   const handleUpload = async () => {
     if (!file) return
     setUploading(true)
-    // Upload logic will be added with Supabase storage
-    setTimeout(() => {
-      setUploading(false)
+    setError('')
+
+    try {
+      // Get current user
+      const { data: { user } } = await supabase.auth.getUser()
+      if (!user) {
+        setError('පළමුව ලොග් වන්න · Please login first')
+        setUploading(false)
+        return
+      }
+
+      // Upload file to Supabase Storage
+      const fileExt = file.name.split('.').pop()
+      const fileName = `${user.id}-${Date.now()}.${fileExt}`
+
+      const { error: uploadError } = await supabase.storage
+        .from('bank-slips')
+        .upload(fileName, file)
+
+      if (uploadError) throw uploadError
+
+      // Save enrollment record to database
+      const { error: dbError } = await supabase
+        .from('enrollments')
+        .insert({
+          student_id: user.id,
+          course_id: '1',
+          status: 'pending',
+          bank_slip_url: fileName
+        })
+
+      if (dbError) throw dbError
+
       setSuccess(true)
-    }, 2000)
+    } catch (err) {
+        setError(err instanceof Error ? err.message : 'දෝෂයක් ඇති විය')
+      }
+    setUploading(false)
   }
 
   if (success) {
@@ -27,8 +62,8 @@ export default function PaymentPage() {
           <p className="text-gray-500 text-sm mb-6">
             සිංහආරච්චි සර් විසින් අනුමත කළ පසු ඔබට email දැනුම්දීමක් ලැබේ.
           </p>
-          <a href="/" className="bg-[#0B1F4A] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#1A3A7A] transition">
-            මුල් පිටුවට · Home
+          <a href="/dashboard" className="bg-[#0B1F4A] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#1A3A7A] transition">
+            Dashboard එකට යන්න
           </a>
         </div>
       </main>
@@ -38,7 +73,6 @@ export default function PaymentPage() {
   return (
     <main className="min-h-screen bg-[#F5F6FA] flex items-center justify-center">
       <div className="bg-white rounded-xl shadow-md p-8 w-full max-w-md">
-        {/* Header */}
         <div className="text-center mb-6">
           <h1 className="text-2xl font-bold text-[#0B1F4A]">
             Singharachchi Sir
@@ -79,6 +113,12 @@ export default function PaymentPage() {
             </div>
           </div>
         </div>
+
+        {error && (
+          <div className="bg-red-50 text-red-600 p-3 rounded-lg mb-4 text-sm">
+            {error}
+          </div>
+        )}
 
         {/* File Upload */}
         <div className="mb-6">

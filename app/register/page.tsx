@@ -15,7 +15,8 @@ export default function RegisterPage() {
     setLoading(true)
     setError('')
     
-    const { error } = await supabase.auth.signUp({
+    // 1. Create auth user
+    const { data, error: authError } = await supabase.auth.signUp({
       email,
       password,
       options: {
@@ -26,8 +27,31 @@ export default function RegisterPage() {
       }
     })
     
-    if (error) setError(error.message)
-    else setSuccess(true)
+    if (authError) {
+      setError(authError.message)
+      setLoading(false)
+      return
+    }
+
+    // 2. Save to students table
+    if (data.user) {
+      const { error: dbError } = await supabase
+        .from('students')
+        .insert({
+          id: data.user.id,
+          full_name: fullName,
+          email: email,
+          phone: phone
+        })
+      
+      if (dbError) {
+        setError(dbError.message)
+        setLoading(false)
+        return
+      }
+    }
+
+    setSuccess(true)
     setLoading(false)
   }
 
