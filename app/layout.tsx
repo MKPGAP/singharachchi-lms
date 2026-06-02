@@ -49,9 +49,10 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${notoSansSinhala.variable} ${kekara.variable} ${guardia.variable} ${sinhasarasavi.variable} h-full antialiased`}
-    >
+  lang="en"
+  suppressHydrationWarning
+  className={`${geistSans.variable} ${geistMono.variable} ${notoSansSinhala.variable} ${kekara.variable} ${guardia.variable} ${sinhasarasavi.variable} h-full antialiased`}
+>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

@@ -38,3 +38,15 @@ body {
 .font-noto-si {
   font-family: 'Gemunu Libre', 'Noto Sans Sinhala', sans-serif;
 }
+
+.font-noto-si {
+  font-family: var(--font-noto-si), sans-serif;
+}
+
+.font-kekara {
+  font-family: var(--font-kekara), sans-serif;
+}
+
+.font-guardia {
+  font-family: var(--font-guardia), sans-serif;
+}
