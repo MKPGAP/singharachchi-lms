@@ -1,3 +1,5 @@
+'use client'
+import { supabase } from '../lib/supabase'
 import Link from 'next/link'
 
 export default function DashboardPage() {
@@ -13,7 +15,12 @@ export default function DashboardPage() {
         </div>
         <div className="flex items-center gap-4">
           <span className="text-sm text-gray-300">ආයුබෝවන්, ශිෂ්‍යයා!</span>
-          <button className="bg-[#A0192D] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-[#8a1526] transition">
+          <button
+            onClick={async () => {
+              await supabase.auth.signOut()
+              window.location.href = '/login'
+            }}
+            className="bg-[#A0192D] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-[#8a1526] transition">
             පිටවීම · Logout
           </button>
         </div>
@@ -80,7 +87,7 @@ export default function DashboardPage() {
         <h3 className="text-xl font-bold text-[#0B1F4A] mb-4">
           ගෙවීම් තත්ත්වය · Payment Status
         </h3>
-        <div className="bg-white rounded-xl shadow-sm p-6">
+        <div className="bg-white rounded-xl shadow-sm p-6 mb-8">
           <div className="flex items-center justify-between">
             <div>
               <p className="font-semibold text-[#0B1F4A]">ජූනි 2026 — LKR 2,500</p>
@@ -90,6 +97,34 @@ export default function DashboardPage() {
               අනුමත කිරීම් බලාපොරොත්තුවෙන්
             </span>
           </div>
+        </div>
+
+        {/* Quick Links */}
+        <h3 className="text-xl font-bold text-[#0B1F4A] mb-4">
+          ඉක්මන් සබැඳි · Quick Links
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <Link href="/lessons">
+            <div className="bg-white rounded-xl p-6 shadow-sm text-center hover:shadow-md transition cursor-pointer">
+              <div className="text-3xl mb-2">🎥</div>
+              <div className="font-semibold text-[#0B1F4A]">පාඩම් බලන්න</div>
+              <div className="text-xs text-gray-400 mt-1">View Lessons</div>
+            </div>
+          </Link>
+          <Link href="/quiz">
+            <div className="bg-white rounded-xl p-6 shadow-sm text-center hover:shadow-md transition cursor-pointer">
+              <div className="text-3xl mb-2">📝</div>
+              <div className="font-semibold text-[#0B1F4A]">ප්‍රශ්නාවලිය</div>
+              <div className="text-xs text-gray-400 mt-1">Take Quiz</div>
+            </div>
+          </Link>
+          <Link href="/payment">
+            <div className="bg-white rounded-xl p-6 shadow-sm text-center hover:shadow-md transition cursor-pointer">
+              <div className="text-3xl mb-2">💳</div>
+              <div className="font-semibold text-[#0B1F4A]">ගෙවීම් කරන්න</div>
+              <div className="text-xs text-gray-400 mt-1">Make Payment</div>
+            </div>
+          </Link>
         </div>
       </div>
     </main>

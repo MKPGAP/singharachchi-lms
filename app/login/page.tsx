@@ -1,6 +1,6 @@
 'use client'
-import { useState } from 'react'
 import { supabase } from '../lib/supabase'
+import { useState } from 'react'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')
@@ -89,6 +89,7 @@ export default function LoginPage() {
         >
           {loading ? 'පිවිසෙමින්...' : 'පිවිසෙන්න · Login'}
         </button>
+ 
 
         <p className="text-center text-sm text-gray-500 mt-4">
           ගිණුමක් නැද්ද?{' '}
