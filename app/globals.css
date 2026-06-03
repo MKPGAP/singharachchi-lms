@@ -95,3 +95,44 @@ html.light section {
 html.light .via-white\/10 {
   --tw-gradient-stops: transparent, rgba(11,31,74,0.1), transparent;
 }
+/* Footer light mode */
+:root .light-footer,
+html:not(.dark) footer {
+  background: #f8f4f4 !important;
+}
+
+html:not(.dark) footer h4,
+html:not(.dark) footer h5 {
+  color: #1a0a0e !important;
+}
+
+html:not(.dark) footer .text-gray-500 {
+  color: #6b5a5e !important;
+}
+
+html:not(.dark) footer img[aria-hidden] {
+  opacity: 0.12 !important;
+  filter: saturate(0.2) contrast(1.3) brightness(0.7) !important;
+}
+
+html:not(.dark) footer [style*="background:\"#08010A\""],
+html:not(.dark) footer [style*="background: #08010A"] {
+  background: #f8f4f4 !important;
+}
+
+html:not(.dark) footer .text-white {
+  color: #1a0a0e !important;
+}
+
+html:not(.dark) [style*="linear-gradient(to bottom, #08010A"] {
+  background: linear-gradient(to bottom, #f8f4f4, transparent) !important;
+}
+
+
+/* Footer skyline fade — matches footer bg per mode */
+.footer-skyline-fade {
+  background: linear-gradient(to bottom, #f9f4f5, transparent);
+}
+.dark .footer-skyline-fade {
+  background: linear-gradient(to bottom, #08010A, transparent);
+}
