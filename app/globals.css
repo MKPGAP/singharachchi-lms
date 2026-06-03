@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@400;600;700&display=swap');
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #050A14;
   --foreground: #ffffff;
@@ -49,4 +51,77 @@ body {
 
 .font-guardia {
   font-family: var(--font-guardia), sans-serif;
+}
+
+/* Light mode */
+.light {
+  --bg-primary: #ffffff;
+  --bg-secondary: #F5F6FA;
+  --text-primary: #0B1F4A;
+  --text-secondary: #4a5568;
+  --border: rgba(11,31,74,0.1);
+}
+
+/* Dark mode */
+.dark {
+  --bg-primary: #050A14;
+  --bg-secondary: #0B1524;
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --border: rgba(255,255,255,0.08);
+}
+
+/* Light mode overrides */
+html.light body {
+  background: #ffffff;
+  color: #0B1F4A;
+}
+
+html.dark body {
+  background: #050A14;
+  color: #ffffff;
+}
+
+/* Light mode overrides */
+html.light main {
+  background: #ffffff !important;
+}
+
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4,
+html.light p:not(.text-\[\#A0192D\]) {
+  color: #0B1F4A;
+}
+
+html.light .text-white {
+  color: #0B1F4A !important;
+}
+
+html.light .text-gray-400 {
+  color: #4a5568 !important;
+}
+
+html.light .text-gray-500 {
+  color: #6b7280 !important;
+}
+
+html.light nav {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-bottom: 1px solid rgba(11,31,74,0.1) !important;
+}
+
+html.light section {
+  background: transparent;
+}
+
+html.light footer {
+  border-color: rgba(11,31,74,0.1) !important;
+}
+
+html.light .rounded-2xl,
+html.light .rounded-3xl {
+  background: rgba(11,31,74,0.04) !important;
+  border-color: rgba(11,31,74,0.1) !important;
 }

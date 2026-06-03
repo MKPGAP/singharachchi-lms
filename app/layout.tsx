@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Noto_Sans_Sinhala } from "next/font/google";
 import localFont from "next/font/local";
+import { ThemeProvider } from "next-themes";
+import Navbar from './components/Navbar';
 import "./globals.css";
 
 const geistSans = Geist({
@@ -38,8 +40,8 @@ const sinhasarasavi = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Singharachchi LMS",
-  description: "Premium A/L media learning platform by Singharachchi Sir",
+  title: "Singharachchi Sir — කලා ලොවේ රජ විෂය",
+  description: "Premium A/L Media Studies platform by Singharachchi Sir",
 };
 
 export default function RootLayout({
@@ -49,11 +51,21 @@ export default function RootLayout({
 }>) {
   return (
     <html
-  lang="en"
-  suppressHydrationWarning
-  className={`${geistSans.variable} ${geistMono.variable} ${notoSansSinhala.variable} ${kekara.variable} ${guardia.variable} ${sinhasarasavi.variable} h-full antialiased`}
->
-      <body className="min-h-full flex flex-col">{children}</body>
+      lang="en"
+      suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable} ${notoSansSinhala.variable} ${kekara.variable} ${guardia.variable} ${sinhasarasavi.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+          disableTransitionOnChange={false}
+        >
+          <Navbar />
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

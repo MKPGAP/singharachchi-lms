@@ -11,24 +11,9 @@ const SI = (props: { children: React.ReactNode; className?: string; style?: Reac
 )
 
 const featuredVideos = [
-  {
-    title: 'A/L Media Studies Orientation',
-    titleSi: 'A/L මාධ්‍ය හැඳින්වීම',
-    duration: '14:32',
-    youtubeUrl: 'https://www.youtube.com/watch?v=08tlaeOZr-Y',
-  },
-  {
-    title: 'Past Paper Strategy Session',
-    titleSi: 'පසුගිය ප්‍රශ්න පත්‍ර රහස්',
-    duration: '22:11',
-    youtubeUrl: 'https://www.youtube.com/watch?v=ndYLCZPQWYM',
-  },
-  {
-    title: 'Media Theory Crash Course',
-    titleSi: 'මාධ්‍ය න්‍යාය කෙටි පාඩම',
-    duration: '18:06',
-    youtubeUrl: 'https://www.youtube.com/watch?v=iQTcOKf5jSg',
-  },
+  { title: 'A/L Media Studies Orientation', titleSi: 'A/L මාධ්‍ය හැඳින්වීම', duration: '14:32', youtubeUrl: 'https://www.youtube.com/watch?v=08tlaeOZr-Y' },
+  { title: 'Past Paper Strategy Session', titleSi: 'පසුගිය ප්‍රශ්න පත්‍ර රහස්', duration: '22:11', youtubeUrl: 'https://www.youtube.com/watch?v=ndYLCZPQWYM' },
+  { title: 'Media Theory Crash Course', titleSi: 'මාධ්‍ය න්‍යාය කෙටි පාඩම', duration: '18:06', youtubeUrl: 'https://www.youtube.com/watch?v=iQTcOKf5jSg' },
 ]
 
 const testimonials = [
@@ -44,7 +29,7 @@ export default function Home() {
   const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0])
 
   return (
-    <main className="bg-[#050A14] overflow-x-hidden">
+    <main className="bg-white dark:bg-[#050A14] overflow-x-hidden transition-colors duration-500">
 
       {/* Grain */}
       <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.025]"
@@ -59,27 +44,6 @@ export default function Home() {
           className="absolute -bottom-48 -right-48 w-[600px] h-[600px] rounded-full"
           style={{ background: 'radial-gradient(circle, rgba(11,31,74,0.6) 0%, transparent 65%)' }} />
       </div>
-
-      {/* NAV */}
-      <motion.nav initial={{ y: -100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-5 md:px-10 py-4 md:py-6"
-        style={{ backdropFilter: 'blur(24px)', background: 'rgba(5,10,20,0.6)', borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
-        <div className="flex flex-col">
-          <span className="text-white font-bold text-lg md:text-xl tracking-tight leading-none">Singharachchi Sir</span>
-          <SI className="text-[#A0192D] text-[10px] tracking-[0.25em] mt-1">කලා ලොවේ රජ විෂය — මාධ්‍ය</SI>
-        </div>
-        <div className="flex items-center gap-4 md:gap-10">
-          <Link href="/courses" className="hidden md:inline text-gray-400 hover:text-white text-sm tracking-wide transition-colors duration-200">Courses</Link>
-          <Link href="/register" className="hidden md:inline text-gray-400 hover:text-white text-sm tracking-wide transition-colors duration-200">Register</Link>
-          <Link href="/login">
-            <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
-              className="flex items-center gap-2 px-5 md:px-6 py-2.5 rounded-full text-sm font-semibold text-white transition-all duration-300"
-              style={{ background: 'linear-gradient(135deg, rgba(160,25,45,0.45), rgba(160,25,45,0.2))', border: '1px solid rgba(160,25,45,0.55)' }}>
-              Login <ArrowRight size={14} />
-            </motion.button>
-          </Link>
-        </div>
-      </motion.nav>
 
       {/* HERO */}
       <section ref={heroRef} className="relative z-10 min-h-screen flex flex-col items-center justify-center text-center px-5 md:px-8 pt-24">
@@ -143,19 +107,11 @@ export default function Home() {
             </Link>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.25, duration: 0.8 }}
-            className="mt-10 flex flex-wrap justify-center gap-3"
-          >
+          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.25, duration: 0.8 }}
+            className="mt-10 flex flex-wrap justify-center gap-3">
             {['New videos weekly', 'Trusted by 500+ learners', 'Shareable YouTube lessons'].map((chip) => (
-              <motion.span
-                key={chip}
-                animate={{ y: [0, -4, 0] }}
-                transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
-                className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs text-gray-300"
-              >
+              <motion.span key={chip} animate={{ y: [0, -4, 0] }} transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
+                className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs text-gray-300">
                 {chip}
               </motion.span>
             ))}
@@ -177,109 +133,97 @@ export default function Home() {
 
       {/* ABOUT SIR */}
       <section className="relative z-10 py-28 md:py-36 px-5 md:px-10 overflow-hidden">
-        <motion.div
-          animate={{ rotate: [0, 360] }}
-          transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-          className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(160,25,45,0.06) 0%, transparent 70%)' }}
-        />
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16 md:gap-24">
-          <motion.div
-            initial={{ opacity: 0, x: -80, rotate: -5 }}
-            whileInView={{ opacity: 1, x: 0, rotate: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-            className="flex-shrink-0 relative"
-          >
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-              className="absolute -inset-4 rounded-3xl pointer-events-none"
-              style={{ border: '1px dashed rgba(160,25,45,0.2)' }}
-            />
-            <motion.div
-              animate={{ rotate: -360 }}
-              transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
-              className="absolute -inset-8 rounded-3xl pointer-events-none"
-              style={{ border: '1px dashed rgba(255,255,255,0.05)' }}
-            />
-            <div className="relative w-72 h-80 md:w-80 md:h-96">
-              <motion.div
-                animate={{ opacity: [0.3, 0.6, 0.3] }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute inset-0 rounded-3xl pointer-events-none"
-                style={{ background: 'radial-gradient(circle at 50% 100%, rgba(160,25,45,0.4) 0%, transparent 60%)', transform: 'scale(1.1)' }}
-              />
-              <motion.img
-                src="/profilepic.jpeg"
-                alt="Singharachchi Sir"
-                whileHover={{ scale: 1.03 }}
-                transition={{ duration: 0.4 }}
-                className="relative z-10 w-full h-full object-cover rounded-3xl"
-                style={{ border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 40px 80px rgba(0,0,0,0.7)' }}
-              />
-              <motion.div
-                initial={{ opacity: 0, scale: 0, y: 20 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6, duration: 0.5, type: 'spring', bounce: 0.4 }}
-                className="absolute -bottom-4 -right-4 z-20 px-4 py-2.5 rounded-2xl"
-                style={{ background: 'linear-gradient(135deg, #B41F36, #8E1327)', border: '1px solid rgba(255,255,255,0.15)', boxShadow: '0 10px 30px rgba(160,25,45,0.4)' }}>
-                <p className="text-white text-xs font-bold">12+ Years</p>
-                <p className="text-red-200 text-[10px]">Experience</p>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, scale: 0, x: -20 }}
-                whileInView={{ opacity: 1, scale: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.8, duration: 0.5, type: 'spring', bounce: 0.4 }}
-                className="absolute -top-4 -left-4 z-20 px-3 py-2 rounded-xl"
-                style={{ background: 'rgba(5,10,20,0.9)', border: '1px solid rgba(255,255,255,0.1)', backdropFilter: 'blur(10px)' }}>
-                <div className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                  <span className="text-green-400 text-[10px] font-semibold">Live Classes</span>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full pointer-events-none"
+          style={{ background: 'radial-gradient(circle, rgba(160,25,45,0.08) 0%, transparent 70%)' }} />
 
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16 md:gap-20">
+
+          {/* Profile Image */}
+<motion.div
+  initial={{ opacity: 0, x: -60 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+  className="flex-shrink-0 relative flex items-center justify-center"
+  style={{ width: '340px', height: '500px' }}
+>
+  {/* Red accent blob */}
+  <div className="absolute -bottom-8 -right-8 w-64 h-64 rounded-full pointer-events-none"
+    style={{ background: 'radial-gradient(circle, rgba(160,25,45,0.25) 0%, transparent 70%)' }} />
+  <div className="absolute -top-8 -left-8 w-48 h-48 rounded-full pointer-events-none"
+    style={{ background: 'radial-gradient(circle, rgba(11,31,74,0.2) 0%, transparent 70%)' }} />
+
+  {/* Photo with frame */}
+  <motion.div
+    className="relative w-full h-full rounded-[2rem] overflow-hidden"
+    style={{ boxShadow: '0 40px 80px rgba(0,0,0,0.35), 0 0 0 1px rgba(160,25,45,0.15)' }}
+    whileHover={{ scale: 1.02 }}
+    transition={{ duration: 0.4 }}
+  >
+    <img
+      src="/profilepic.jpeg"
+      alt="Singharachchi Sir"
+      className="w-full h-full object-cover"
+      style={{ objectPosition: '50% 20%' }}
+    />
+    {/* Red gradient overlay at bottom */}
+    <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
+      style={{ background: 'linear-gradient(to top, rgba(160,25,45,0.3), transparent)' }} />
+  </motion.div>
+
+  {/* Live Classes badge */}
+  <motion.div
+    initial={{ opacity: 0, y: -20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ delay: 0.6, type: 'spring', bounce: 0.4 }}
+    className="absolute -top-4 left-4 z-20 px-4 py-2 rounded-2xl flex items-center gap-2"
+    style={{ background: '#0B1F4A', boxShadow: '0 8px 24px rgba(0,0,0,0.3)' }}
+  >
+    <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+    <span className="text-green-400 text-xs font-bold tracking-wide">Live Classes</span>
+  </motion.div>
+
+  {/* Experience badge */}
+  <motion.div
+    initial={{ opacity: 0, x: 30 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    viewport={{ once: true }}
+    transition={{ delay: 0.8, type: 'spring', bounce: 0.4 }}
+    className="absolute -bottom-4 -right-4 z-20 px-5 py-3 rounded-2xl text-center"
+    style={{ background: 'linear-gradient(135deg, #A0192D, #6e1120)', boxShadow: '0 12px 32px rgba(160,25,45,0.5)' }}
+  >
+    <p className="text-white text-lg font-black leading-none">12+</p>
+    <p className="text-red-200 text-[11px] font-semibold">Years Exp.</p>
+  </motion.div>
+</motion.div>
+
+      
+          {/* About Text */}
           <motion.div
-            initial={{ opacity: 0, x: 80 }}
+            initial={{ opacity: 0, x: 60 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="flex-1"
           >
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-[#A0192D] text-[10px] tracking-[0.3em] uppercase font-semibold mb-6">
+            <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+              transition={{ delay: 0.2 }} className="text-[#A0192D] text-[10px] tracking-[0.3em] uppercase font-semibold mb-6">
               About
             </motion.p>
             <div className="overflow-hidden mb-6">
-              <motion.h2
-                initial={{ y: 60 }}
-                whileInView={{ y: 0 }}
-                viewport={{ once: true }}
+              <motion.h2 initial={{ y: 60 }} whileInView={{ y: 0 }} viewport={{ once: true }}
                 transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="font-noto-si text-4xl md:text-5xl font-black text-white leading-tight">
                 සිංහආරච්චි සර්
               </motion.h2>
             </div>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.7 }}
               className="font-noto-si text-gray-400 text-base leading-relaxed mb-4">
               වසර 12කට වැඩි අත්දැකීමක් සහිත A/L මාධ්‍ය ගුරුවරයා. ශ්‍රී ලංකාවේ සෑම දිස්ත්‍රික්කයකම සිටින ශිෂ්‍යයන් සිංහආරච්චි සර් සමඟ A/L මාධ්‍ය ඉගෙන ගනිමින් සිටිති.
             </motion.p>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
               transition={{ delay: 0.5, duration: 0.7 }}
               className="font-noto-si text-gray-500 text-sm leading-relaxed mb-10">
               කලා ලොවේ රජ විෂය ලෙස සැලකෙන මාධ්‍ය විෂය ශිෂ්‍යයන්ට ලෙහෙසියෙන් ඉගෙන ගැනීමට හැකි වන ලෙස නව ක්‍රමවේදයකින් උගන්වයි.
@@ -290,8 +234,7 @@ export default function Home() {
                 { num: '500+', si: 'ශිෂ්‍යයන්', en: 'Students' },
                 { num: '95%', si: 'සමත්', en: 'Pass Rate' },
               ].map((s, i) => (
-                <motion.div
-                  key={i}
+                <motion.div key={i}
                   initial={{ opacity: 0, y: 30, scale: 0.9 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true }}
@@ -299,10 +242,7 @@ export default function Home() {
                   whileHover={{ scale: 1.05 }}
                   className="text-center p-4 rounded-2xl transition-all duration-300"
                   style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
-                  <motion.p
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
+                  <motion.p initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }}
                     transition={{ delay: 0.7 + i * 0.1, type: 'spring', bounce: 0.5 }}
                     className="text-2xl font-black text-white mb-1">
                     {s.num}
@@ -322,23 +262,14 @@ export default function Home() {
       {/* YOUTUBE VIDEOS */}
       <section className="relative z-10 py-28 md:py-36 px-5 md:px-10">
         <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6"
-          >
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
+            className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
               <p className="text-[#A0192D] text-[10px] tracking-[0.3em] uppercase font-semibold mb-4">YouTube</p>
-              <h2 className="font-noto-si text-5xl md:text-6xl font-black text-white leading-tight">
-                නවතම වීඩියෝ
-              </h2>
+              <h2 className="font-noto-si text-5xl md:text-6xl font-black text-white leading-tight">නවතම වීඩියෝ</h2>
             </div>
             <a href="https://www.youtube.com/@lankawatamamedia" target="_blank" rel="noopener noreferrer">
-              <motion.button
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.96 }}
+              <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
                 className="flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white"
                 style={{ background: 'rgba(255,0,0,0.15)', border: '1px solid rgba(255,0,0,0.3)' }}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="red">
@@ -350,30 +281,21 @@ export default function Home() {
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              { id: '08tlaeOZr-Y' },
-              { id: 'ndYLCZPQWYM' },
-              { id: 'iQTcOKf5jSg' },
-              { id: 'f9TJ3B13Yyw' },
+              { id: '08tlaeOZr-Y' }, { id: 'ndYLCZPQWYM' },
+              { id: 'iQTcOKf5jSg' }, { id: 'f9TJ3B13Yyw' },
             ].map((video, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+              <motion.div key={i}
+                initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.7 }}
                 whileHover={{ y: -4 }}
                 className="rounded-2xl overflow-hidden transition-all duration-500"
-                style={{ border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 20px 60px rgba(0,0,0,0.4)' }}
-              >
+                style={{ border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 20px 60px rgba(0,0,0,0.4)' }}>
                 <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                  <iframe
-                    className="absolute inset-0 w-full h-full"
+                  <iframe className="absolute inset-0 w-full h-full"
                     src={`https://www.youtube.com/embed/${video.id}`}
-                    title="Singharachchi Sir Video"
-                    frameBorder="0"
+                    title="Singharachchi Sir Video" frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
+                    allowFullScreen />
                 </div>
               </motion.div>
             ))}
@@ -391,9 +313,7 @@ export default function Home() {
           <div className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
               <p className="text-[#A0192D] text-[10px] tracking-[0.3em] uppercase font-semibold mb-4">Why Choose Us</p>
-              <h2 className="font-noto-si text-5xl md:text-6xl font-black text-white leading-tight">
-                ඇයි සිංහආරච්චි<br />සර් සමඟ?
-              </h2>
+              <h2 className="font-noto-si text-5xl md:text-6xl font-black text-white leading-tight">ඇයි සිංහආරච්චි<br />සර් සමඟ?</h2>
             </div>
             <p className="text-gray-500 text-sm max-w-xs leading-relaxed md:text-right">
               Sri Lanka&apos;s most advanced A/L Media Studies platform — built for the next generation.
@@ -440,9 +360,7 @@ export default function Home() {
               <p className="text-[#A0192D] text-[10px] tracking-[0.3em] uppercase font-semibold mb-3">Video Learning</p>
               <h2 className="font-noto-si text-4xl md:text-5xl font-black text-white leading-tight">YouTube Lessons + Easy Sharing</h2>
             </div>
-            <p className="font-noto-si text-gray-400 text-sm max-w-sm">
-              Watch lessons instantly, share directly with friends, and build group learning with one click.
-            </p>
+            <p className="font-noto-si text-gray-400 text-sm max-w-sm">Watch lessons instantly, share directly with friends, and build group learning with one click.</p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {featuredVideos.map((video, i) => {
@@ -544,7 +462,7 @@ export default function Home() {
       {/* DIVIDER */}
       <div className="relative z-10 h-px mx-5 md:mx-10 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-      {/* RECOMMENDATIONS + RELIABILITY */}
+      {/* RELIABILITY + TESTIMONIALS */}
       <section className="relative z-10 py-24 md:py-32 px-5 md:px-10">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-6">
           <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
