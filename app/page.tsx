@@ -109,7 +109,7 @@ export default function Home() {
 
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.25, duration: 0.8 }}
             className="mt-10 flex flex-wrap justify-center gap-3">
-            {['New videos weekly', 'Trusted by 500+ learners', 'Shareable YouTube lessons'].map((chip) => (
+            {['New videos weekly', 'Trusted by 5000+ learners', 'Shareable YouTube lessons'].map((chip) => (
               <motion.span key={chip} animate={{ y: [0, -4, 0] }} transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
                 className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs text-gray-300">
                 {chip}
@@ -194,7 +194,7 @@ export default function Home() {
     style={{ background: 'linear-gradient(135deg, #A0192D, #6e1120)', boxShadow: '0 12px 32px rgba(160,25,45,0.5)' }}
   >
     <p className="text-white text-lg font-black leading-none">12+</p>
-    <p className="text-red-200 text-[11px] font-semibold">Years Exp.</p>
+    <p className="text-red text-[11px] font-semibold">Years Exp.</p>
   </motion.div>
 </motion.div>
 
@@ -231,7 +231,7 @@ export default function Home() {
             <div className="grid grid-cols-3 gap-4">
               {[
                 { num: '12+', si: 'වසර', en: 'Experience' },
-                { num: '500+', si: 'ශිෂ්‍යයන්', en: 'Students' },
+                { num: '5000+', si: 'ශිෂ්‍යයන්', en: 'Students' },
                 { num: '95%', si: 'සමත්', en: 'Pass Rate' },
               ].map((s, i) => (
                 <motion.div key={i}
@@ -255,6 +255,7 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+      
 
       {/* DIVIDER */}
       <div className="relative z-10 h-px mx-5 md:mx-10 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
