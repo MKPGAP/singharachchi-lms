@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
 import { useRef } from 'react'
 import MediaBackground from './components/MediaBackground'
+import StatsCounter from './components/StatsCounter'
 import { Play, FileText, CheckCircle, ArrowRight, ChevronDown, PlayCircle, Share2, Star, ShieldCheck, Users, Smartphone, CreditCard, Video, ClipboardList, Trophy } from 'lucide-react'
 
 const SI = (props: { children: React.ReactNode; className?: string; style?: React.CSSProperties }) => (
@@ -693,22 +694,7 @@ export default function Home() {
       </section>
 
       {/* STATS */}
-      <section className="relative z-10 py-24 md:py-32 px-5 md:px-10">
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 text-center">
-          {[
-            { num: '12+', si: 'වසර', en: 'Years of Experience' },
-            { num: '500+', si: 'ශිෂ්‍යයන්', en: 'Students Taught' },
-            { num: '95%', si: 'සමත්', en: 'Pass Rate' },
-          ].map((s, i) => (
-            <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.7 }}>
-              <p className="text-5xl md:text-6xl font-black text-white mb-2">{s.num}</p>
-              <p className="font-noto-si text-[#A0192D] text-sm mb-1">{s.si}</p>
-              <p className="text-gray-700 text-xs">{s.en}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+      <StatsCounter />
 
 
       {/* FOOTER */}
