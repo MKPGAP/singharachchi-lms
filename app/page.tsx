@@ -2,7 +2,8 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
 import { useRef } from 'react'
-import { Play, FileText, CheckCircle, ArrowRight, ChevronDown, PlayCircle, Share2, Star, ShieldCheck, Users } from 'lucide-react'
+import MediaBackground from './components/MediaBackground'
+import { Play, FileText, CheckCircle, ArrowRight, ChevronDown, PlayCircle, Share2, Star, ShieldCheck, Users, Smartphone, CreditCard, Video, ClipboardList, Trophy } from 'lucide-react'
 
 const SI = (props: { children: React.ReactNode; className?: string; style?: React.CSSProperties }) => (
   <span style={props.style} className={`font-noto-si ${props.className ?? ""}`}>
@@ -30,10 +31,9 @@ export default function Home() {
 
   return (
     <main className="bg-white dark:bg-[#050A14] overflow-x-hidden transition-colors duration-500">
-
-      {/* Grain */}
-      <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.025]"
-        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`, backgroundSize: '256px' }} />
+  <MediaBackground />
+  {/* Grain */}
+      <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.025]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`, backgroundSize: '256px' }} />
 
       {/* Glows */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
@@ -129,6 +129,197 @@ export default function Home() {
       </section>
 
       {/* DIVIDER LINE */}
+      <div className="relative z-10 h-px mx-5 md:mx-10 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+     
+      {/* SCROLL STORY SECTION */}
+      <section className="relative z-10 py-40 px-5 md:px-10 overflow-hidden">
+
+        {/* Animated background SVG lines — DNA helix effect */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <svg className="absolute inset-0 w-full h-full opacity-[0.07]" viewBox="0 0 1200 1600" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="lineGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="transparent" />
+                <stop offset="30%" stopColor="#A0192D" />
+                <stop offset="70%" stopColor="#A0192D" />
+                <stop offset="100%" stopColor="transparent" />
+              </linearGradient>
+            </defs>
+            {/* Left helix strand */}
+            <motion.path
+              d="M 400 0 Q 300 200 400 400 Q 500 600 400 800 Q 300 1000 400 1200 Q 500 1400 400 1600"
+              stroke="url(#lineGrad)" strokeWidth="1.5" fill="none"
+              initial={{ pathLength: 0, opacity: 0 }}
+              whileInView={{ pathLength: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 2.5, ease: 'easeInOut' }}
+            />
+            {/* Right helix strand */}
+            <motion.path
+              d="M 800 0 Q 900 200 800 400 Q 700 600 800 800 Q 900 1000 800 1200 Q 700 1400 800 1600"
+              stroke="url(#lineGrad)" strokeWidth="1.5" fill="none"
+              initial={{ pathLength: 0, opacity: 0 }}
+              whileInView={{ pathLength: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 2.5, ease: 'easeInOut', delay: 0.3 }}
+            />
+            {/* Cross connectors */}
+            {[0, 1, 2, 3, 4, 5].map((i) => (
+              <motion.line
+                key={i}
+                x1="400" y1={130 + i * 230} x2="800" y2={130 + i * 230}
+                stroke="#A0192D" strokeWidth="1" strokeDasharray="4 4"
+                initial={{ opacity: 0, scaleX: 0 }}
+                whileInView={{ opacity: 0.5, scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.5 + i * 0.15 }}
+                style={{ transformOrigin: '600px center' }}
+              />
+            ))}
+          </svg>
+
+          {/* Floating orbs */}
+          {[
+            { x: '15%', y: '20%', size: 300, delay: 0 },
+            { x: '75%', y: '50%', size: 250, delay: 1 },
+            { x: '30%', y: '80%', size: 200, delay: 2 },
+          ].map((orb, i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-full pointer-events-none"
+              style={{
+                left: orb.x,
+                top: orb.y,
+                width: orb.size,
+                height: orb.size,
+                background: 'radial-gradient(circle, rgba(160,25,45,0.08) 0%, transparent 70%)',
+                transform: 'translate(-50%, -50%)',
+              }}
+              animate={{
+                scale: [1, 1.3, 1],
+                opacity: [0.4, 0.8, 0.4],
+              }}
+              transition={{
+                duration: 5 + i,
+                repeat: Infinity,
+                ease: 'easeInOut',
+                delay: orb.delay,
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="max-w-4xl mx-auto relative">
+
+          {/* Heading */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-24"
+          >
+            <p className="text-[#A0192D] text-[10px] tracking-[0.3em] uppercase font-semibold mb-4">How It Works</p>
+            <h2 className="font-noto-si text-4xl md:text-5xl font-black text-white leading-tight">
+              ඉගෙනීමේ ගමන
+            </h2>
+            <p className="text-gray-500 text-sm mt-4 max-w-sm mx-auto">
+              Simple steps to start your A/L Media journey with Singharachchi Sir
+            </p>
+          </motion.div>
+
+          {/* Center timeline line */}
+          <div className="relative">
+            <motion.div
+              className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px"
+              initial={{ scaleY: 0, transformOrigin: 'top' }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, ease: 'easeInOut' }}
+              style={{ background: 'linear-gradient(to bottom, transparent, rgba(160,25,45,0.6) 15%, rgba(160,25,45,0.6) 85%, transparent)' }}
+            />
+
+            {[
+              { icon: <Smartphone size={22} className="text-[#A0192D]" />, title: 'ලියාපදිංචි වන්න', sub: 'Register', desc: 'ඔබේ details ඇතුළත් කර platform එකට join වන්න.', side: 'left' },
+              { icon: <CreditCard size={22} className="text-[#A0192D]" />, title: 'ගෙවීම කරන්න', sub: 'Payment', desc: 'Bank slip upload කර enrollment confirm කරගන්න.', side: 'right' },
+              { icon: <Video size={22} className="text-[#A0192D]" />, title: 'Video Lessons', sub: 'Watch', desc: 'HD quality videos ඕනෑ වෙලාවක, ඕනෑ තැනක බලන්න.', side: 'left' },
+              { icon: <ClipboardList size={22} className="text-[#A0192D]" />, title: 'Weekly MCQ', sub: 'Practice', desc: 'සතියකට වරක් MCQ quiz complete කර progress track කරන්න.', side: 'right' },
+              { icon: <FileText size={22} className="text-[#A0192D]" />, title: 'PDF Tutes', sub: 'Study', desc: 'Expert notes download කර offline study කරන්න.', side: 'left' },
+              { icon: <Trophy size={22} className="text-[#A0192D]" />, title: 'A/L සමත් වන්න', sub: 'Success', desc: 'සිංහආරච්චි සර්ගේ 95% pass rate සමඟ සාර්ථක වන්න.', side: 'right' },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: item.side === 'left' ? -80 : 80 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                className={`relative flex items-center mb-16 ${item.side === 'left' ? 'flex-row' : 'flex-row-reverse'}`}
+              >
+                {/* Content card */}
+                <div className={`w-5/12 ${item.side === 'left' ? 'pr-10 text-right' : 'pl-10 text-left'}`}>
+                  <motion.div
+                    whileHover={{ scale: 1.04, y: -4 }}
+                    transition={{ duration: 0.3 }}
+                    className="p-6 rounded-2xl group"
+                    style={{
+                      background: 'rgba(255,255,255,0.03)',
+                      border: '1px solid rgba(255,255,255,0.08)',
+                      boxShadow: '0 20px 40px rgba(0,0,0,0.25)',
+                    }}
+                  >
+                    <p className="text-[#A0192D] text-[10px] tracking-widest uppercase font-bold mb-2">{item.sub}</p>
+                    <h3 className="font-noto-si text-white text-lg font-bold mb-2">{item.title}</h3>
+                    <p className="font-noto-si text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                  </motion.div>
+                </div>
+
+                {/* Center icon node */}
+                <div className="w-2/12 flex flex-col items-center relative z-10">
+                  <motion.div
+                    initial={{ scale: 0, rotate: -90 }}
+                    whileInView={{ scale: 1, rotate: 0 }}
+                    viewport={{ once: true, margin: '-60px' }}
+                    transition={{ duration: 0.7, delay: 0.2, type: 'spring', bounce: 0.5 }}
+                    whileHover={{ scale: 1.2 }}
+                    className="relative w-14 h-14 rounded-full flex items-center justify-center cursor-pointer"
+                    style={{
+                      background: 'linear-gradient(135deg, #0B1F4A, #1A3A7A)',
+                      border: '2px solid rgba(160,25,45,0.5)',
+                      boxShadow: '0 0 0 4px rgba(160,25,45,0.1), 0 8px 24px rgba(0,0,0,0.4)',
+                    }}
+                  >
+                    {item.icon}
+                    {/* Pulse ring */}
+                    <motion.div
+                      animate={{ scale: [1, 1.8, 1], opacity: [0.5, 0, 0.5] }}
+                      transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: i * 0.4 }}
+                      className="absolute inset-0 rounded-full pointer-events-none"
+                      style={{ border: '1px solid rgba(160,25,45,0.4)' }}
+                    />
+                  </motion.div>
+                  <motion.span
+                    initial={{ opacity: 0, y: 5 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4 + i * 0.1 }}
+                    className="text-[#A0192D] text-[10px] font-black mt-2 tracking-widest"
+                  >
+                    0{i + 1}
+                  </motion.span>
+                </div>
+
+                {/* Empty opposite side */}
+                <div className="w-5/12" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* DIVIDER */}
+      <div className="relative z-10 h-px mx-5 md:mx-10 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+      {/* DIVIDER */}
       <div className="relative z-10 h-px mx-5 md:mx-10 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
       {/* ABOUT SIR */}
@@ -519,22 +710,66 @@ export default function Home() {
         </div>
       </section>
 
+
       {/* FOOTER */}
-      <footer className="relative z-10 py-16 px-10 border-t" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+      <footer className="relative z-10 overflow-hidden text-[#A0192D]" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+        <div className="max-w-6xl mx-auto px-10 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
+          <div className="md:col-span-2">
+            <h4 className="text-white font-black text-2xl mb-1">Singharachchi Sir</h4>
+            <SI className="text-[#A0192D] text-xs tracking-widest block mb-4">කලා ලොවේ රජ විෂය — මාධ්‍ය</SI>
+            <p className="font-noto-si text-gray-500 text-sm leading-relaxed mb-6 max-w-xs">නූතන පරම්පරාව ආමන්ත්‍රණය කරන Online A/L මාධ්‍ය platform එක.</p>
+          </div>
           <div>
-            <h4 className="text-white font-bold text-lg mb-1">Singharachchi Sir</h4>
-            <SI className="text-[#A0192D] text-xs tracking-widest">කලා ලොවේ රජ විෂය — මාධ්‍ය</SI>
+            <h5 className="text-white font-bold text-sm mb-5">Site Links</h5>
+            <ul className="space-y-3">
+              {[{label:"Home",href:"/"},{label:"Courses",href:"/courses"},{label:"Register",href:"/register"},{label:"Login",href:"/login"}].map((link)=>(
+                <li key={link.label}><Link href={link.href} className="text-gray-500 hover:text-[#A0192D] text-sm transition-colors">{link.label}</Link></li>
+              ))}
+            </ul>
           </div>
-          <div className="flex items-center gap-8">
-            <Link href="/courses" className="text-gray-600 hover:text-white text-sm transition-colors">Courses</Link>
-            <Link href="/login" className="text-gray-600 hover:text-white text-sm transition-colors">Login</Link>
-            <Link href="/register" className="text-gray-600 hover:text-white text-sm transition-colors">Register</Link>
+          <div>
+            <h5 className="text-white font-bold text-sm mb-5">Contact</h5>
+            <ul className="space-y-3">
+              <li className="text-gray-500 text-sm">📍 Sri Lanka</li>
+              <li><a href="tel:+94777279476" className="text-gray-500 hover:text-white text-sm">📞 +94 777 279 476</a></li>
+              <li><a href="mailto:singharachchisir@gmail.com" className="text-gray-500 hover:text-white text-sm">✉️ singharachchisir@gmail.com</a></li>
+            </ul>
           </div>
-          <p className="text-gray-700 text-xs">© 2026 Singharachchi Sir</p>
+        </div>
+        <div className="relative w-full overflow-hidden" style={{height:"180px"}}>
+          <svg viewBox="0 0 1440 180" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg" className="absolute bottom-0 w-full" style={{opacity:0.3}}>
+            <rect x="0" y="120" width="40" height="60" fill="currentColor" />
+            <rect x="45" y="90" width="30" height="90" fill="currentColor" />
+            <rect x="80" y="100" width="50" height="80" fill="currentColor" />
+            <rect x="135" y="70" width="35" height="110" fill="currentColor" />
+            <rect x="205" y="80" width="45" height="100" fill="currentColor" />
+            <rect x="255" y="60" width="30" height="120" fill="currentColor" />
+            <rect x="300" y="110" width="8" height="70" fill="currentColor" />
+            <ellipse cx="304" cy="108" rx="18" ry="12" fill="currentColor" />
+            <rect x="300" y="40" width="8" height="70" fill="currentColor" />
+            <ellipse cx="304" cy="38" rx="10" ry="6" fill="currentColor" />
+            <line x1="304" y1="10" x2="304" y2="38" stroke="currentColor" strokeWidth="3" />
+            <rect x="340" y="95" width="40" height="85" fill="currentColor" />
+            <rect x="385" y="75" width="55" height="105" fill="currentColor" />
+            <rect x="445" y="55" width="35" height="125" fill="currentColor" />
+            <rect x="535" y="65" width="30" height="115" fill="currentColor" />
+            <rect x="635" y="45" width="40" height="135" fill="currentColor" />
+            <rect x="680" y="30" width="60" height="150" fill="currentColor" />
+            <rect x="840" y="50" width="45" height="130" fill="currentColor" />
+            <rect x="985" y="60" width="40" height="120" fill="currentColor" />
+            <rect x="1160" y="55" width="45" height="125" fill="currentColor" />
+            <rect x="1250" y="95" width="60" height="85" fill="currentColor" />
+            <rect x="1360" y="110" width="80" height="70" fill="currentColor" />
+            <rect x="0" y="178" width="1440" height="4" fill="currentColor" />
+          </svg>
+        </div>
+        <div className="border-t px-10 py-5" style={{borderColor:"rgba(255,255,255,0.05)"}}>
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+            <p className="text-gray-700 text-xs">© 2026 Singharachchi Sir · All rights reserved</p>
+            <SI className="text-gray-700 text-xs">කලා ලොවේ රජ විෂය — මාධ්‍ය</SI>
+          </div>
         </div>
       </footer>
-
     </main>
   )
 }
