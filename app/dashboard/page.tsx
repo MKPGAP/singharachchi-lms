@@ -47,31 +47,50 @@ export default function DashboardPage() {
       </div>
 
       {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-white/8 backdrop-blur-2xl"
-        style={{ background: 'rgba(5,10,20,0.85)' }}>
-        <div className="max-w-6xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-[#A0192D] flex items-center justify-center">
-              <Play size={14} fill="white" className="text-white" />
+      <header className="sticky top-0 z-50 border-b border-white/[0.06]"
+        style={{ background: 'rgba(5,10,20,0.92)', backdropFilter: 'blur(20px)' }}>
+        <div className="max-w-6xl mx-auto px-5 md:px-8 py-3 flex items-center justify-between">
+
+          <Link href="/" className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-[#A0192D] flex items-center justify-center shrink-0">
+              <Play size={13} fill="white" className="text-white" />
             </div>
-            <div>
-              <p className="text-sm font-bold text-white leading-none">Singharachchi Sir</p>
-              <SI className="text-[#A0192D] text-[10px] tracking-widest">කලා ලොවේ රජ විෂය</SI>
+            <div className="leading-none">
+              <p className="text-[13px] font-bold text-white">Singharachchi Sir</p>
+              <SI className="text-[#A0192D] text-[9px] tracking-[0.15em]">කලා ලොවේ රජ විෂය</SI>
             </div>
           </Link>
 
-          <div className="flex items-center gap-3">
-            <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full"
-              style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
-              <div className="w-6 h-6 rounded-full bg-[#A0192D] flex items-center justify-center text-[10px] font-bold">
+          <nav className="hidden md:flex items-center gap-1">
+            {[
+              { href: '/dashboard', label: 'Dashboard', active: true },
+              { href: '/lessons', label: 'Lessons', active: false },
+              { href: '/quiz', label: 'Quiz', active: false },
+              { href: '/payment', label: 'Payment', active: false },
+            ].map((item) => (
+              <Link key={item.href} href={item.href}
+                className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+                  item.active
+                    ? 'bg-[#A0192D]/15 text-[#A0192D] border border-[#A0192D]/25'
+                    : 'text-gray-500 hover:text-white hover:bg-white/5'
+                }`}>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full"
+              style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}>
+              <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#A0192D] to-[#6e1120] flex items-center justify-center text-[11px] font-black text-white shrink-0">
                 {studentName.charAt(0).toUpperCase()}
               </div>
-              <SI className="text-sm text-gray-300">{studentName}</SI>
+              <SI className="text-[13px] text-gray-300 hidden sm:block">{studentName}</SI>
             </div>
             <button onClick={async () => { await supabase.auth.signOut(); window.location.href = '/login' }}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-gray-400 hover:text-white hover:bg-white/5 transition-all">
-              <LogOut size={15} />
-              <span className="hidden md:inline">Logout</span>
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold text-gray-500 hover:text-white hover:bg-white/5 transition-all">
+              <LogOut size={13} />
+              <span className="hidden sm:inline">Logout</span>
             </button>
           </div>
         </div>
