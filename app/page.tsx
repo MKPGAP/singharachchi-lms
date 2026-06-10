@@ -3,6 +3,11 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
 import { useRef } from 'react'
 import MediaBackground from './components/MediaBackground'
+import TunnelBackground from './components/TunnelBackground'
+import StatsCounter from './components/StatsCounter'
+import RevealWrapper from './components/RevealWrapper'
+import VaporizeTextCycle, { Tag } from './components/ui/vapour-text'
+import MediaOutlineText from './components/MediaOutlineText'
 import { Play, FileText, CheckCircle, ArrowRight, ChevronDown, PlayCircle, Share2, Star, ShieldCheck, Users, Smartphone, CreditCard, Video, ClipboardList, Trophy } from 'lucide-react'
 
 const SI = (props: { children: React.ReactNode; className?: string; style?: React.CSSProperties }) => (
@@ -32,6 +37,7 @@ export default function Home() {
   return (
     <main className="bg-white dark:bg-[#050A14] overflow-x-hidden transition-colors duration-500">
   <MediaBackground />
+  <TunnelBackground />
   {/* Grain */}
   <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.025]"
         style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`, backgroundSize: '256px' }} />
@@ -78,10 +84,11 @@ export default function Home() {
               </motion.h1>
             </div>
             <div className="overflow-visible py-1">
-              <motion.h1 initial={{ y: 110 }} animate={{ y: 0 }} transition={{ delay: 0.65, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                className="font-guardia text-[48px] sm:text-[64px] md:text-[98px] font-black text-[#A0192D] leading-none italic tracking-wide">
-                MEDIA
-              </motion.h1>
+              <motion.div
+                initial={{ y: 110 }} animate={{ y: 0 }}
+                transition={{ delay: 0.65, duration: 1, ease: [0.16, 1, 0.3, 1] }}>
+                <MediaOutlineText />
+              </motion.div>
             </div>
           </div>
 
