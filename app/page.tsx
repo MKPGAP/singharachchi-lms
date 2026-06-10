@@ -37,7 +37,7 @@ export default function Home() {
   return (
     <main className="bg-white dark:bg-[#050A14] overflow-x-hidden transition-colors duration-500">
   <MediaBackground />
-  <TunnelBackground />
+  <div className="dark:block hidden"><TunnelBackground /></div>
   {/* Grain */}
   <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.025]"
         style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`, backgroundSize: '256px' }} />
@@ -72,7 +72,7 @@ export default function Home() {
           <div className="space-y-1 mb-10">
             <div className="overflow-visible py-2">
               <motion.h1 initial={{ y: 110 }} animate={{ y: 0 }} transition={{ delay: 0.35, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                className="font-noto-si text-[68px] sm:text-[92px] md:text-[142px] font-black text-white leading-none tracking-tight">
+                className="font-noto-si text-[68px] sm:text-[92px] md:text-[142px] font-black text-gray-900 dark:text-white leading-none tracking-tight">
                 කලා ලොවේ
               </motion.h1>
             </div>
